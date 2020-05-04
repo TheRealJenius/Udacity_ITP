@@ -1,0 +1,17 @@
+/* Add CSS rules here! */
+li{
+    height:90px;
+    width:90px;
+    background-color: lightblue;
+    margin: 5px;
+    text-align: center;
+    list-style: none;
+    font-size: 80px;
+  }
+  
+  ul{
+    height: 300px;
+    width: 300px;    
+    display: flex;
+    flex-wrap: wrap;
+  }
