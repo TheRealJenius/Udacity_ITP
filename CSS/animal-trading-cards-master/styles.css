@@ -1,1 +1,42 @@
 /* add your CSS here */
+span{
+    font-weight: bold;
+}
+
+#main{
+    height : 550px;
+    width : 320px;
+    padding : 5px;
+    float : center;
+    box-shadow: 10px 10px 10px lightslategrey;
+    background-image: linear-gradient(lightblue, white);
+}
+.margin10{
+    margin : 10px;
+}
+
+div{
+    border : 2px solid lightgrey;
+}
+
+h3{
+    font-weight: bold;
+    font-size: 2em;
+    margin : 5px;
+}
+
+img{
+    height : 200px;
+    width : 300px;
+}
+#interest{
+    font-style: italic;
+}
+
+ul{
+    padding-left : 10px;
+}
+
+li{
+    list-style: none;
+}
