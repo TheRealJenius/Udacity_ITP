@@ -8,7 +8,16 @@ def print_pause(text):
 
 def print_quick(text):
     print(text)
+    sleep(1)
+
+def print_quicker(text):
+    print(text)
     sleep(0.5)
+
+def print_quickest(text):
+    print(text)
+    sleep(0.1)
+
 
 def choice(text,a = "yes",b = "no"):
     """
@@ -38,66 +47,150 @@ def choice(text,a = "yes",b = "no"):
             valid = True
             return forced_choice
 
-def Monsters(FearToAdd):
+def monsters(monster_types, villian):
     """
     Returns a random monster for the duration of the story
     """
-    if FearToAdd = '':
-        FearToAdd = "Nothing"
+    if villian == monster_types[0] :
+        pass # Function for monsters
+    elif villian == monster_types[1] :
+        pass # Function for monsters
+    elif villian == monster_types[2] :
+        pass # Function for monsters
+    elif villian == monster_types[3] :
+        pass # Function for monsters
+    elif villian == monster_types[4] :
+        pass # Function for monsters
+    elif villian == monster_types[5] :
+        pass # Function for monsters
+    elif villian == monster_types[6] :
+        pass # Function for monsters
+    elif villian == monster_types[7] :
+        pass # Function for monsters
+
+
+def ending(best_friend, afraid,):
+    print_pause("Quickly you run to the portal before it closes")
+    print_pause("You made it!!")
+    print_pause(f"Just as you pass through you see {best_friend} been pulled into the Phantasm Void by {afraid}.")
+    play_again = choice("Do you want to play again? (yes OR no)","yes","no")
+    return play_again
+
+
+def the_story(name, best_friend, gender, afraid):
+    today = datetime.datetime.now()
+    t_day = today.day
+    t_month = today.month
+    t_year = today.year
+    t_hour = today.hour
+    t_mins = today.minute
+    awake = "no"
+    snooze = 0
+
+    villian = (name[len(name)::-1]).lower() # Slicing the name to create a mirror copy
+    if gender == "male":
+        villian_gender = "female"
+    else:
+        villian_gender = "male"
+
+    if afraid == '': # This way if there is no input it regsiters as 'nothing', which would also make an intersting story
+        afraid = "Nothing"
     chosen = random.randint(0,7)
-    MonsterTypes = ["Goblin King", "Broken Clown", "Hydra Spider", "ArGru", "Upside-down Teletubby", "Malfunctioning Robot", "Death", "Shark with Gummy Bear teeth"]
-    MonsterTypes.append(FearToAdd)
-    print(MonsterTypes)
+    monster_types = ["Goblin King", "Broken Clown", "Hydra Spider", "ArGru", "Upside-down Teletubby", "Malfunctioning Robot", "Death", "Shark with Gummy Bear teeth"]
+    monster_types.append(afraid)
+    villian_type = monster_types[chosen]
+    monsters(monster_types,villian)
 
+    # And so it begins
+    print_quick("Quickly you run to the portal before it closes")
+    print_quick("You made it!!")
+    print_quick(f"Just as you pass through you see {best_friend} been pulled into the Phantasm Void by {afraid}.")
+    print_quicker(f"You scream {best_friend.upper}!!")
 
-def intro():
-    Today = datetime.datetime.now()
-    Day = Today.day
-    Month = Today.month
-    Year = Today.year
-    Hour = Today.hour
-    Mins = Today.minute
+    print_quickest("BRRRRR....")
+    print_quickest("BRRRRRRR....BRRRRRRRR")
     print_pause("*YAWN*")
-    print_pause(f"You wake up on {Day}/{Month}/{Year}")
-    print_pause(f"The time is {Hour}:{Mins}")
-    choice("Do you want to wakeup (yes OR no)?","yes","no")
+    print_pause("You wake up, unsure what day it is")
+    print_pause(f"You check you phone and see it's {t_day}/{t_month}/{t_year}")
+    
+    while awake == "no": # Notice how I don't mention the date again ;)
+        print_pause(f"The time is {t_hour}:{t_mins}")
+        awake = choice("Do you want to get out of bed? (yes OR no)","yes","no")
+        rand_mins = random.randint(1,20)
+        rand_hour = random.randint(0,1)
+        if ((t_mins + rand_mins) % 60) != (t_mins + rand_mins): # This way if the mins go past 60 it add an extra hour
+            t_mins = (t_mins + rand_mins) %60
+            t_hour += 1
+        t_hour = (t_hour + rand_hour) %24
+        snooze += 1
+    
+    print_pause("You're finally up!")
+    print_pause("After going to the bathrom and having your shower, you realise today is going to be a hot day")
+    clothes = choice("Would you like to wear some clothes? (yes OR no)","yes","no")
+    
+    if clothes == "no": # This is where the gender comes into play
+        print_pause("You've decided to go wild and strut in the nude")
+    else:
+        if gender == "male":
+            print_pause("You pick you favourite top and jogging bottoms to wear")
+        else:
+            print_pause("You picked your favourite top and shorts to wear")
+    
+    print_pause("Just us you sit down to check your what's happening on social media")
+    print_pause("You hear a loud crash and the room starts shaking")
+    print_pause("Afraid that your house would crumble on top of you")
+    print_pause("You step outside to see just what's happening")
+    print_pause("To your suprise you realise you're not at home")
+    print_pause("Everything is the wrong way around")
+    print_pause("Cats are as tall as trees")
+    print_pause("Birds are tunelling from the ground up")
+    print_pause("Trees are falling from the sky, with the weight of a pillow...only to disappear once they touch the ground")
+    print_pause("You've resolved yourself to finding your way home and walk out of the cul-de-sac")
+    print_pause("You are met with a fork in the road")
+    fork = choice("Do you want to go left or right?", "left", "right")
+          
     
 
 
-def LetsPlay():
-    ''' 
+def lets_play():
+    '''
     Main funcion 
     '''
 
     # Calling all variables required
-    start_time = time()
-    print_pause("Before we begin, could you tell us:\n...")
-    Name = input("What's your name:\n...")
-    Gender = choice("Are you male or female?","male","female")
-    Fear = input("What are you afraid of?\n")
-    Villian = (Name[len(Name)::-1]).lower() # Slicing the name to create a mirror copy
-    if Gender == "male":
-        Villian_Gender = "female"
-    else:
-        Villian_Gender = "male"
+    print_pause("Welcome to your Story")
+    print_pause("A few house rules:")
+    print_pause("   1) When a prompt is required the console will display '...' in front of an empty line")
+    print_pause("   2) Answers are accepted in a single work e.g. yes, no, open etc.")
+    print_pause("   3) Once you've entered an answer, press the 'ENTER' or 'RETURN' key\n")
+    print_pause("Before we begin, could you tell us:")
+    name = input(" - What's your name:\n...")
+    best_friend = input(" - What's your best friend's name:\n...")
+    gender = choice(" - Are you male or female?","male","female")
+    afraid = input(" - What are you afraid of?\n...")
     
-    Monsters(Fear)
-
     # The game starts from here
-    intro()
-    
+    play = choice("Are you ready to begin?(yes OR no)","yes","no")
+    played = 0
+    start_time = time()
+
+    while play == "yes":
+        the_story(name,best_friend, gender, afraid)
+        played +=1
+        play = ending(best_friend, afraid)
+
     end_time = time()
     total_time = end_time - start_time # Calculates the total amount of time taken
-    hours = int(total_time / 3600) # 3600 seconds in 1 hour
-    hourless = total_time % 3600 # remainder to calculate minutes and seconds
-    minutes = int(hourless / 60 ) # 60 seconds in a minute
-    seconds = round(hourless % 60) # what's left will equal seconds
+    t_hours = int(total_time / 3600) # 3600 seconds in 1 t_hour
+    t_hourless = total_time % 3600 # remainder to calculate minutes and seconds
+    minutes = int(t_hourless / 60 ) # 60 seconds in a minute
+    seconds = round(t_hourless % 60) # what's left will equal seconds
 
-    print (f"Well done, you completed the game in {hours}h:{minutes}m:{seconds}s")
+    print (f"Well done, you completed {played} game run(s) in {t_hours}h:{minutes}m:{seconds}s")
     
 
 
-LetsPlay()
+lets_play()
 
 
 
