@@ -73,15 +73,16 @@ def quiz(text, answer, prize):
     while valid is False:
         chosen = input(text + "\n...").lower()
         if chosen == answer.lower():
-            print_pause("Well done!!")
+            print_quick("\nWell done!!")
             print_pause(f"You've received the {prize}")
             valid = True
             return prize  # They get the prize added to their arsenal
         else:
             retry += 1
+            print_quick("\nYour answer was incorrect, try once more")
 
         if retry > 1:
-            print_pause("Sadly you failed to answer the question correctly")
+            print_pause("\nSadly you failed to answer the question correctly")
             print_pause(f"The correct answer is {answer}")
             valid = True
             return ""  # This means they didn't answer the quiz correctly
@@ -309,7 +310,7 @@ def monsters(image_required):
 
 def ending(player, villain):
     if player[13] > 0:  # secret ending - because every good story needs one ;)
-        print_quick("You look around and see that you are in a laboratory, "
+        print_quick("\nYou look around and see that you are in a laboratory, "
                     "in what used to be your attic")
         print_quick("You look around the laboratory and find a pod with "
                     "something inside")
@@ -334,30 +335,30 @@ def ending(player, villain):
                             "(yes OR no)", "yes", "no")
         return player
     elif villain[3] == "":  # lose condition
-        print_quicker("Unfortuantely you failed to win the battle aginst "
-                      f"{villain[0]} {villain[1]}")
-        print_quicker("Staring down on you, they bite your head off")
-        player[12] = choice("Do you want to play again? "
+        print_quicker("\nUnfortuantely you failed to win the battle aginst "
+                      f"{villain[0]} {villain[2]}")
+        print_quicker("Staring down at you, they bite your head off")
+        player[12] = choice("\nDo you want to play again? "
                             "(yes OR no)", "yes", "no")
         return player
     elif villain[3] == "defeated":  # win condition 1
-        print_quicker("You run into your house to make sure "
-                      f"{villain[0]} {villain[1]} is really dead")
+        print_quicker("\nYou run into your house to make sure "
+                      f"{villain[0]} {villain[2]} is really dead")
         print_quicker("You poke at the corpse and feel satisfied that "
                       "they are finally dead")
         print_quicker("You start searching around for a means of escpae "
                       "from this world")
     elif villain[3] == "escaped":  # win condition 2
-        print_quicker("You search around the house for a clue to escape")
+        print_quicker("\nYou search around the house for a clue to escape")
         print_quicker("You hear the thumping getting louder, "
-                      f"{villain[0]} {villain[1]} might just breakthrough")
+                      f"{villain[0]} {villain[2]} might just breakthrough")
 
-    print_quicker("From the corner of your eye, you see something glowing")
+    print_quicker("\nFrom the corner of your eye, you see something glowing")
     print_quicker("It's a portal and it's closing")
-    print_pause("Quickly you run to the portal before it closes")
+    print_pause("\nQuickly you run to the portal before it closes")
     print_pause("You made it!!")
-    print_pause(f"Just as you pass through you see {player[8]} been pulled "
-                f"into the Phantasm Void by {player[2]}.")
+    print_pause(f"\nJust as you pass through you see {player[8]} been pulled "
+                f"into the Phantasm Void by {player[2]}.\n")
     player[12] = choice("Do you want to play again? "
                         "(yes OR no)", "yes", "no")
     return player
@@ -373,8 +374,8 @@ def middle(player):
     player[7] = ""
 
     if player[10] == "left":
-        print_pause(f"As you head {player[10]} on the road you come across a "
-                    "strange lady who looks to be talking to herself")
+        print_pause(f"\nAs you head {player[10]} on the road you come across a"
+                    " strange lady who looks to be talking to herself")
         print_quick("You approach them")
         print_quick("Suddenly they turn")
         print_pause("Appraising you from head to toe, they smile a "
@@ -397,8 +398,8 @@ def middle(player):
             print_pause("\nYou decide to continue on your journey to escape")
 
     else:
-        print_pause(f"As you head {player[10]} on the road you come across a "
-                    "strange man who looks to be talking to himself")
+        print_pause(f"\nAs you head {player[10]} on the road you come across a"
+                    " strange man who looks to be talking to himself")
         print_quick("You approach them")
         print_quick("Suddenly they turn")
         print_pause("Appraising you from head to toe, they smile a "
@@ -406,6 +407,8 @@ def middle(player):
         quizzes = choice("Would you like to ask them for help? "
                          "(yes OR no)", "yes", "no")
         if quizzes == "yes":
+            print_pause("They strange man asks you the following "
+                        "three questions:")
             player[6] = quiz("1) I am orange and sound like a parrot. "
                              "I am a __________", "carrot", "Behemoth Mace")
             player[7] = quiz("\n2) what goes up but never comes "
@@ -418,7 +421,7 @@ def middle(player):
             print_pause("\nYou decide to continue on your journey to escape")
 
     if player[5] == "Enigma Cracker" and player[4] is False:
-        print_pause("Ohhh no!!")
+        print_pause("\n Ohhh no!!")
         print_pause("Because you have no clothes on, you are "
                     "unable to equip the Enigma Cracker")
         print_pause("Reluctantly you drop the Enigma Cracker\n")
@@ -438,9 +441,9 @@ def encounter(player, villain):
                 "the corner of you eyes")
     print_pause(f"You turn around only to find {player[8]} "
                 "standing behind you")
-    print_pause("With a sigh of relief you hug them")
+    print_pause("With a sigh of relief you hug them\n")
     if player[4] is False:
-        print_pause(f"\n{player[8]} asks you, why are you not wearing "
+        print_pause(f"{player[8]} asks you, why are you not wearing "
                     "any clothes?")
         print_pause("You tell them it's a long story")
     print_pause("You begin to fill your friend in on everything that's "
@@ -456,21 +459,21 @@ def encounter(player, villain):
                 f"{villain[0]}")
     print_pause("They show you the folliwng:\n")
     monsters(villain[2])
-    print_pause("Taken aback, you ask if anyone's been able to escape?")
+    print_pause("\nTaken aback, you ask if anyone's been able to escape?")
     print_quick("They tell you that they know of a way and "
                 "start leading you towards that direction")
-    print_quickest("~" * 3)
+    print_quickest("~\n" * 3)
     print_quick(f"As you continue to follow {player[8]}, you realise "
                 "you've been down this way before")
-    print_quick("Finally you reach your destination; it's your house!\n")
-    print_quick(f"Surprised you turn to ask {player[8]} what's going on?")
+    print_pause("Finally you reach your destination; it's your house!\n")
+    print_quick(f"Surprised, you turn to ask {player[8]} what's going on?")
     print_quick("Only to see their eyes glazed over as their body "
                 "melts into a puddle of goop")
     print_quick(f"They form back up as a {villain[1]} version of yourself")
     print_quick("They then shout:")
-    print_quick(f"As promised I've brought {player[0]} to you!!".upper())
+    print_quick(f"\nAs promised I've brought {player[0]} to you!!".upper())
     print_quick("Let my family go, our deal is done!".upper())
-    print_quicker("You try to run, but it's too late, you're surrounded")
+    print_quicker("\nYou try to run, but it's too late, you're surrounded")
     print_quicker(f"All around you, you see many versions of {player[2]}")
     monsters(player[2])
     print_quicker("You look up")
@@ -480,7 +483,7 @@ def encounter(player, villain):
                    "to you")
     print_quickest("You see a door on the side of the house, that "
                    "looks to have a keypad")
-    player[11] = choice("Do you choose to fight or run?", "fight", "run")
+    player[11] = choice("Do you choose to fight OR run?", "fight", "run")
 
     return player
 
@@ -513,11 +516,11 @@ def code(text, player, villain):
         else:
             retry += 1
 
-        if retry > 3:
-            print_pause("Sadly you failed to enter the correct code")
+        if retry > 2:
+            print_pause("\nSadly you failed to enter the correct code")
             print_pause(f"You must now face {villain[2]}")
             print_pause(f"{villain[0]} {villain[2]}, smiles a sly smile, "
-                        "then laughs:\n MWAHAHAHAHA")
+                        "then laughs:\nMWAHAHAHAHA")
             monsters(villain[2])
             valid = True
             return ""  # This means they didn't enter the code correctly
@@ -530,9 +533,9 @@ def battle(player, villain):
     The last return statment is for the win conditions
     '''
     if player[1] == "male":
-        print_quick("You decide to man up!")
+        print_quick("\nYou decide to man up!")
     else:
-        print_quick("You decide to woman up!")
+        print_quick("\nYou decide to woman up!")
     print_quick(f"You turn to face {villain[0]} {villain[2]}")
 
     # 50% chance to win if they are missing one equipment
@@ -540,13 +543,13 @@ def battle(player, villain):
 
     if player[6] != "":
         if player[6] == "Sonic Shoes":
-            print_quick("You put on your Sonic Shoes")
+            print_quick("\nYou put on your Sonic Shoes")
             print_quick(f"You start dodging all the attacks of {villain[0]}")
             print_quick("You think to yourself, if only you had an opening, "
                         "you could gather enough speed to take them down")
             if player[7] == "" and win_lose == "win":
-                print_quicker("You decide not to worry about what "
-                              "you don't have")
+                print_pause("You decide not to worry about what "
+                            "you don't have")
                 print_quicker("You persevere and gain enough speed to get "
                               "behind them")
                 print_quicker("With the momentum you gathered, you manage "
@@ -559,15 +562,15 @@ def battle(player, villain):
                 villain[3] = ""
                 return villain
         elif player[6] == "Behemoth Mace":
-            print_quick("You equip your Behmoth Mace and ready yourself")
+            print_quick("\nYou equip your Behmoth Mace and ready yourself")
             print_quick("You start fighting back by parrying all the "
                         f"attacks of {villain[0]} {villain[2]}")
             print_quick("You think to yourself, if only you had enough "
                         "strenghth, you could to take them down in couple "
                         "of blows")
             if player[7] == "" and win_lose == "win":
-                print_quicker("You decide not to worry about what you "
-                              "don't have")
+                print_pause("You decide not to worry about what you "
+                            "don't have")
                 print_quicker("You persevere and slowly start pushing "
                               f"{villain[0]} {villain[2]} back")
                 print_quicker("With determination alone, you manage "
@@ -647,14 +650,14 @@ def battle(player, villain):
 
 
 def door(player, villain):
-    print_quick("You've chosen to flee for the door")
+    print_quick("\nYou've chosen to flee for the door")
     print_quick("You come across a code panel")
     if player[5] == "":
         print_quick("Unfortunately, you don't have the Enigma Cracker "
                     "equipped to crack the code")
     else:
         print_quick("The Enigma Cracker gives you a hint to the "
-                    "4 digit code")
+                    f"{len(player[9])} digit code")
         print_quick("The code is equal to the time you woke up today:")
     villain[3] = code("You attempt to enter the code:", player, villain)
     if villain[3] == "":
@@ -675,24 +678,24 @@ def the_story(player):
     player[3] = 0  # if they play again this would need to reset to 0
 
     # And so it begins
-    print_quick("Quickly you run to the portal before it closes")
+    print_quick("\nQuickly you run to the portal before it closes")
     print_quick("You made it!!")
     print_quick(f"Just as you pass through you see {player[8]} "
                 f"been pulled into the Phantasm Void by {player[2]}.")
     print_quicker(f"You scream {player[8].upper()}!!")
 
-    print_quickest("BRRRRR....")
-    print_quickest("BRRRRRRR....BRRRRRRRR")
+    print_quickest("\nBRRRRR....")
+    print_quicker("BRRRRRRR....BRRRRRRRR")
     print_pause("*YAWN*")
-    print_pause("You wake up, unsure what day it is")
+    print_pause("\nYou wake up, unsure what day it is")
     print_pause(f"You check you phone and see it's {t_day}/{t_month}/{t_year}")
     print_pause(f"The time is {t_hour}:{t_mins}")
     while awake == "no":  # Notice how I don't mention the date again ;)
         awake = choice("Do you want to get out of bed? "
                        "(yes OR no)", "yes", "no")
         if awake == "no":
-            print_quick("You choose to snooze your alarm")
-            print_quick("BRRRRRRR....BRRRRRRRR")
+            print_pause("You choose to snooze your alarm")
+            print_quick("\nBRRRRRRR....BRRRRRRRR")
             rand_mins = random.randint(1, 20)
             rand_hour = random.randint(0, 1)
             # This way if the mins go past 60 it add an extra hour
@@ -709,22 +712,25 @@ def the_story(player):
     player[9] = f"{t_hour}{t_mins}"
 
     if player[3] > 1:
-        print_pause(f"After snoozing the alarm {player[3]} times, you "
+        print_pause(f"\nAfter snoozing the alarm {player[3]} times, you "
                     f"finally wake up at {t_hour}:{t_mins}")
-    print_pause("You're finally up!")
+    else:
+        print_pause("\nYou're finally up!")
     print_pause("After going to the bathrom and having your shower, "
                 "you realise today is going to be a hot day")
     clothes = choice("Would you like to wear some clothes? "
                      "(yes OR no)", "yes", "no")
 
-    if clothes == "no":  # This is where the gender comes into play
-        print_pause("You've decided to go wild and strut in the nude")
-    else:
+    if clothes == "no":
+        print_pause("\nYou've decided to go wild and strut in the nude\n")
+        player[4] = False
+    else:  # This is where the gender comes into play
+        player[4] = True
         if player[1] == "male":
-            print_pause("You pick you favourite top and jogging bottoms "
+            print_pause("\nYou pick you favourite top and jogging bottoms "
                         "to wear\n")
         else:
-            print_pause("You picked your favourite top and shorts to wear\n")
+            print_pause("\nYou picked your favourite top and shorts to wear\n")
 
     print_pause("Just as you sit down to check what's happening on "
                 "social media")
@@ -742,7 +748,7 @@ def the_story(player):
     print_pause("You've resolved yourself to finding your way back "
                 "home and start to walk out of the cul-de-sac")
     print_pause("You are met with a fork in the road")
-    player[10] = choice("Do you want to go left or right?", "left", "right")
+    player[10] = choice("Do you want to go left OR right?", "left", "right")
     return player
 
 
@@ -771,11 +777,11 @@ def user():
     player[0] = input(" - What's your name:\n...")
     if player[0] == "":  # in case they just press enter
         player[0] = "Player"
-    player[8] = input(" - What's your best friend's name:\n...")
+    player[8] = input("\n - What's your best friend's name:\n...")
     if player[0] == "":
         player[0] = "Bestie"
-    player[1] = choice(" - Are you male or female?", "male", "female")
-    player[2] = input(" - What are you afraid of?\n...")
+    player[1] = choice("\n - Are you male OR female?", "male", "female")
+    player[2] = input("\n - What are you afraid of?\n...")
     # If no input it regsiters as 'the Nothingness Paradox',
     # which would also make an intersting story
     if player[2] == "":
@@ -797,7 +803,7 @@ def bad_guy(player):
     # Capitalize the first letter
     villain[0] = villain[0][0].upper() + villain[0][1:len(villain[0])]
     if len(villain[0]) > 4:  # adding some umph to the villain's name
-        villain[0] = villain[0][0:2] + "-" + villain[0][3:len(villain[0])]
+        villain[0] = villain[0][0:2] + "-" + villain[0][2:len(villain[0])]
 
     if player[1] == "male":
         villain[1] = "female"
@@ -820,8 +826,8 @@ def lets_play():
     Main funcion
     '''
     # Calling all variables required
-    print_pause("Welcome to your Story")
-    print_pause("A few house rules:")
+    print_pause("\n Welcome to your Story")
+    print_pause("\nA few house rules:")
     print_pause("   1) When a prompt is required the console will display "
                 "'...' in front of an empty line")
     print_pause("   2) Answers are accepted in a single work "
@@ -835,7 +841,7 @@ def lets_play():
     villain = bad_guy(player)
 
     # The game starts from here
-    player[12] = choice("Are you ready to begin?(yes OR no)", "yes", "no")
+    player[12] = choice("\nAre you ready to begin?(yes OR no)", "yes", "no")
     player[13] = 0
     start_time = time()
 
@@ -863,11 +869,11 @@ def lets_play():
     seconds = round(t_hourless % 60)
 
     if villain[3] != "":  # Player wins
-        print_pause("Well done!!"
+        print_pause("\nWell done!!"
                     f"\nYou completed {player[13]} game run(s) in - "
                     f"{t_hours}h:{minutes}m:{seconds}s")
     else:  # Player loses
-        print_pause("Better luck next time!"
+        print_pause("\nBetter luck next time!"
                     f"\nYou lasted - {t_hours}h:{minutes}m:{seconds}s")
 
 
