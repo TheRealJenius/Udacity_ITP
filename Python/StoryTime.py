@@ -826,7 +826,7 @@ def lets_play():
     Main funcion
     '''
     # Calling all variables required
-    print_pause("\n Welcome to your Story")
+    print_pause("\nWelcome to your Story")
     print_pause("\nA few house rules:")
     print_pause("   1) When a prompt is required the console will display "
                 "'...' in front of an empty line")
